@@ -4,7 +4,7 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-const API = "https://davomat-djang1.onrender.com/api";
+const API = "https://itline-django.onrender.com/api";
 
 const user = JSON.parse(localStorage.getItem("user") || "{}");
 
@@ -271,9 +271,7 @@ function stageStyle(stage) {
             <tr>
               <th class="text-left px-4 py-3">#</th>
               <th class="text-left px-4 py-3">O'quvchi</th>
-              <div class="" v-if="user.is_admin">
-                <th class="text-left px-4 py-3">Raqam</th>
-              </div>
+              <th v-if="user.is_admin" class="text-left px-4 py-3">Raqam</th>
               <th class="text-left px-4 py-3">Etap</th>
             </tr>
           </thead>
@@ -297,16 +295,14 @@ function stageStyle(stage) {
                   </p>
                 </div>
               </td>
-              <div class="" v-if="user.is_admin">
-                <td class="px-4 py-4">
-                  <span
-                    class="px-3 py-1 rounded-full text-xs font-medium"
-                    :style="stageStyle(student.stage)"
-                  >
-                    {{ student.phone }}
-                  </span>
-                </td>
-              </div>
+              <td v-if="user.is_admin" class="px-4 py-4">
+                <span
+                  class="px-3 py-1 rounded-full text-xs font-medium"
+                  :style="stageStyle(student.stage)"
+                >
+                  {{ student.phone }}
+                </span>
+              </td>
               <td class="px-4 py-4">
                 <span
                   class="px-3 py-1 rounded-full text-xs font-medium"
